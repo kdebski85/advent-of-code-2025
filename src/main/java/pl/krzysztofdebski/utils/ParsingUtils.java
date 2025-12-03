@@ -16,6 +16,15 @@ public class ParsingUtils {
         return result;
     }
 
+    public static int[] singleDigitIntArray(String s) {
+        int length = s.length();
+        int[] ints = new int[length];
+        for (int i = 0; i < length; i++) {
+            ints[i] = Integer.parseInt(s.substring(i, i + 1));
+        }
+        return ints;
+    }
+
     public static Integer[] integerArray(String s) {
         return ints(s).toArray(Integer[]::new);
     }

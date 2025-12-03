@@ -16,3 +16,6 @@ out/
 
 ## Generated code
 **/main/generated/
+
+#inputs
+/src/main/resources/

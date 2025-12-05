@@ -14,7 +14,7 @@ public class Task4b {
 
     public static void main(String[] args) throws IOException {
         long result = 0;
-        long prevResult = 0;
+        long prevResult;
         // String input = "src/main/resources/task4/4-sample.input";
         String input = "src/main/resources/task4/4-task.input";
         char[][] chars = readTwoDimensionsCharArray(Path.of(input));
@@ -27,8 +27,7 @@ public class Task4b {
                         Coord coord = new Coord(y, x);
                         for (Direction direction : Direction.ALL_DIRECTIONS) {
                             Coord relative = coord.relative(direction);
-                            Character c = relative.valueIfInBounds(chars);
-                            if (c != null && '@' == c) {
+                            if ('@' == relative.value(chars, 'x')) {
                                 s++;
                             }
                         }

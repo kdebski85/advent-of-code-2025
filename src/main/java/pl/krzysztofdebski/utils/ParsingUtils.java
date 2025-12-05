@@ -16,6 +16,16 @@ public class ParsingUtils {
         return result;
     }
 
+    public static List<Integer> unsignedInts(String s) {
+        Scanner sc = new Scanner(s);
+        List<Integer> result = new ArrayList<>();
+        String number;
+        while ((number = sc.findInLine("\\d+")) != null) {
+            result.add(Integer.parseInt(number));
+        }
+        return result;
+    }
+
     public static int[] singleDigitIntArray(String s) {
         int length = s.length();
         int[] ints = new int[length];
@@ -44,6 +54,16 @@ public class ParsingUtils {
         List<Long> result = new ArrayList<>();
         String number;
         while ((number = sc.findInLine("-?\\d+")) != null) {
+            result.add(Long.parseLong(number));
+        }
+        return result;
+    }
+
+    public static List<Long> unsignedLongs(String s) {
+        Scanner sc = new Scanner(s);
+        List<Long> result = new ArrayList<>();
+        String number;
+        while ((number = sc.findInLine("\\d+")) != null) {
             result.add(Long.parseLong(number));
         }
         return result;

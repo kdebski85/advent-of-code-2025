@@ -24,8 +24,7 @@ public class Task4 {
                     Coord coord = new Coord(y, x);
                     for (Direction direction : Direction.ALL_DIRECTIONS) {
                         Coord relative = coord.relative(direction);
-                        Character c = relative.valueIfInBounds(chars);
-                        if (c != null && '@' == c) {
+                        if ('@' == relative.value(chars, 'x')) {
                             s++;
                         }
                     }

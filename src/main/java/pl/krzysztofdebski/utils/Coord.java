@@ -24,8 +24,16 @@ public class Coord extends Pair<Integer, Integer> {
         return inBounds(x(), y(), array) ? array[this.y()][this.x()] : null;
     }
 
+    public boolean value(boolean[][] array, boolean valueOutOfBound) {
+        return inBounds(x(), y(), array) ? array[this.y()][this.x()] : valueOutOfBound;
+    }
+
     public Character valueIfInBounds(char[][] array) {
         return inBounds(x(), y(), array) ? array[this.y()][this.x()] : null;
+    }
+
+    public char value(char[][] array, char valueOutOfBound) {
+        return inBounds(x(), y(), array) ? array[this.y()][this.x()] : valueOutOfBound;
     }
 
     public Character value(Character[][] array) {
@@ -42,6 +50,10 @@ public class Coord extends Pair<Integer, Integer> {
 
     public Integer valueIfInBounds(int[][] array) {
         return inBounds(x(), y(), array) ? array[this.y()][this.x()] : null;
+    }
+
+    public int value(int[][] array, int valueOutOfBound) {
+        return inBounds(x(), y(), array) ? array[this.y()][this.x()] : valueOutOfBound;
     }
 
     public long value(long[][] array) {

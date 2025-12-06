@@ -155,4 +155,20 @@ public class Utils {
         }
         return sum;
     }
+
+    public static long sumLongs(long[] array) {
+        long sum = 0;
+        for (long value : array) {
+            sum += value;
+        }
+        return sum;
+    }
+
+    public static long sumLongs(Collection<Long> collection) {
+        long sum = 0;
+        for (long value : collection) {
+            sum += value;
+        }
+        return sum;
+    }
 }

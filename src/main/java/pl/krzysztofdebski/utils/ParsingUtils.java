@@ -3,6 +3,7 @@ package pl.krzysztofdebski.utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ParsingUtils {
 
@@ -17,11 +18,29 @@ public class ParsingUtils {
     }
 
     public static List<Integer> unsignedInts(String s) {
-        Scanner sc = new Scanner(s);
-        List<Integer> result = new ArrayList<>();
-        String number;
-        while ((number = sc.findInLine("\\d+")) != null) {
-            result.add(Integer.parseInt(number));
+       List<Integer> result = new ArrayList<>();
+
+       int number = 0;
+       boolean set = false;
+        for (char c : s.toCharArray()) {
+            if (c >= '0' && c <= '9') {
+                if (set) {
+                    number *= 10;
+                    number += c - '0';
+                } else {
+                    set = true;
+                    number = c - '0';
+                }
+            } else {
+                if (set) {
+                    result.add(number);
+                }
+                number = 0;
+                set = false;
+            }
+        }
+        if (set) {
+            result.add(number);
         }
         return result;
     }
@@ -60,11 +79,29 @@ public class ParsingUtils {
     }
 
     public static List<Long> unsignedLongs(String s) {
-        Scanner sc = new Scanner(s);
         List<Long> result = new ArrayList<>();
-        String number;
-        while ((number = sc.findInLine("\\d+")) != null) {
-            result.add(Long.parseLong(number));
+
+        long number = 0;
+        boolean set = false;
+        for (char c : s.toCharArray()) {
+            if (c >= '0' && c <= '9') {
+                if (set) {
+                    number *= 10L;
+                    number += c - '0';
+                } else {
+                    set = true;
+                    number = c - '0';
+                }
+            } else {
+                if (set) {
+                    result.add(number);
+                }
+                number = 0;
+                set = false;
+            }
+        }
+        if (set) {
+            result.add(number);
         }
         return result;
     }

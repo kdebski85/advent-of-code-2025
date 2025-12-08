@@ -69,11 +69,32 @@ public class ParsingUtils {
     }
 
     public static List<Long> longs(String s) {
-        Scanner sc = new Scanner(s);
         List<Long> result = new ArrayList<>();
-        String number;
-        while ((number = sc.findInLine("-?\\d+")) != null) {
-            result.add(Long.parseLong(number));
+
+        long number = 0;
+        boolean set = false;
+        boolean negative = false;
+        for (char c : s.toCharArray()) {
+            if (c >= '0' && c <= '9') {
+                if (set) {
+                    number *= 10L;
+                    number += c - '0';
+                } else {
+                    set = true;
+                    number = c - '0';
+                }
+            } else {
+                if (set) {
+                    result.add(negative ? -number : number);
+                    number = 0;
+                    set = false;
+                }
+
+                negative = c == '-';
+            }
+        }
+        if (set) {
+            result.add(negative ? -number : number);
         }
         return result;
     }

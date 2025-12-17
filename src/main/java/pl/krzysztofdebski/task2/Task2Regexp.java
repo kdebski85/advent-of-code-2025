@@ -10,7 +10,7 @@ import static pl.krzysztofdebski.utils.ParsingUtils.unsignedLongs;
 
 public class Task2Regexp {
 
-    public static final Pattern PATTERN = Pattern.compile("^(\\d+?)\\1+$");
+    public static final Pattern PATTERN = Pattern.compile("^(\\d+?)\\1$");
 
     public static void main(String[] args) throws IOException {
         long result = 0;
